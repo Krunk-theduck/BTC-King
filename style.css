@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%
+}
+
+*,*:before,*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Ubuntu Mono",monospace;
+    font-size: 16px
+}
+
+html,body {
+    width: 100%;
+    font-size: 100%
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    position: absolute;
+    background: hsl(224,46%,9%);
+    color: #c4cccc;
+    font-family: monospace;
+    --sroll-width: 1ch
+}
+
+body::-webkit-scrollbar {
+    width: var(--sroll-width);
+    background-color: inherit
+}
+
+body::-webkit-scrollbar-track {
+    border-radius: var(--sroll-width);
+    background: hsl(224,30%,15%)
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: var(--sroll-width);
+    background: hsl(224,35%,18%)
+}
+
+.wrapper {
+    margin: 3ch;
+    display: block;
+    background-color: inherit
+}
+
+.console-text::before {
+    white-space: pre;
+    content: " > ";
+    color: #1d9e11;
+    margin-left: -3ch
+}
+
+.console-text {
+    white-space: pre-wrap;
+    display: block
+}
+
+.console-text::selection,#input::selection {
+    background: #c4cccc;
+    color: #0d1323
+}
+
+.console-text.error {
+    color: #db3131
+}
+
+.console-text.error::selection {
+    background: #db3131
+}
+
+.console-text.warning {
+    color: #cfcf39
+}
+
+.console-text.warning::selection {
+    background: #cfcf39
+}
+
+.console-text.info {
+    color: #4286f4
+}
+
+.console-text.info::selection {
+    background: #4286f4
+}
+
+.pia-text {
+    font-family: "Nova Mono",monospace;
+    font-size: 14px
+}
+
+.pia-text::before {
+    font-family: "Nova Mono",monospace;
+    font-size: 14px;
+    content: " # ";
+    color: #adec46
+}
+
+.notification-text::before {
+    content: " ! ";
+    color: #ffc53a;
+    font-style: oblique
+}
+
+.input-text:before {
+    color: #db6a36;
+    content: " $ "
+}
+
+#input {
+    position: fixed;
+    top: -5000px;
+    left: -5000px
+}
+
+@keyframes caret-blink {
+    0% {
+        background: #c4cccc
+    }
+
+    5% {
+        background: transparent
+    }
+
+    40% {
+        background: transparent
+    }
+
+    45% {
+        background: #c4cccc
+    }
+}
+
+.caret-text {
+    white-space: pre;
+    min-width: 1ch;
+    position: relative;
+    display: inline-block;
+    background: #c4cccc;
+    color: #0d1323;
+    animation-name: caret-blink;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite
+}
+
+.stats-bar {
+    white-space: pre-wrap;
+    color: #1d9e11;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    background-color: inherit;
+    z-index: 2;
+    border: #1d9e11 1px dashed;
+    padding: 1ch;
+    margin: 1ch
+}
+
+.basic-ui-wrapper {
+    --console-pading: .5em
+}
+
+.basic-ui-wrapper>.console-text {
+    border: 1px solid #fff;
+    border-radius: .5em;
+    position: relative;
+    max-width: 80%;
+    width: max-content;
+    padding: var(--console-pading);
+    margin: 10px 0
+}
+
+.basic-ui-wrapper>.console-text::before {
+    all: initial;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: .4em;
+    width: 0;
+    height: 0;
+    border: .6em solid transparent;
+    border-right-color: inherit;
+    border-left: 0;
+    margin-top: -.6em;
+    margin-left: -.6em
+}
+
+.basic-ui-wrapper .input-text {
+    min-width: calc(var(--console-pading)*2 + 2px + 30ch);
+    border-color: #db6a36
+}
+
+.basic-ui-wrapper .pia-text {
+    border-color: #adec46
+}
+
+.basic-ui-wrapper .notification-text {
+    border-color: #ffc53a
+}
+
+.basic-ui-wrapper .notification-text::before {
+    border: .3em solid #ffc53a;
+    border-left: 0;
+    height: auto;
+    top: .4em;
+    margin-top: 0
+}
+
+.basic-ui-wrapper .stats-bar {
+    z-index: 2;
+    background-color: hsl(223,48%,20%);
+    border: 1px solid #fff;
+    border-radius: .5em
+}
+
+.advance-ui-wrapper {
+    max-width: 1000px;
+    width: 80%;
+    min-width: 600px;
+    padding: 25px;
+    margin: -20px auto;
+    min-height: calc(100% + 20px);
+    background: hsl(224,46%,7%);
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-color: #596383;
+    box-shadow: 0 0 30px -10px #596383
+}
+
+.advance-ui-wrapper>.console-text {
+    max-width: 70%
+}
+
+.advance-ui-wrapper .pia-text {
+    margin-left: auto;
+    font-family: 'Sniglet',cursive;
+    font-size: 15px;
+    max-width: 70%
+}
+
+.advance-ui-wrapper>.pia-text::before {
+    all: initial
+}
+
+.advance-ui-wrapper>.pia-text::after {
+    all: initial;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: .4em;
+    width: 0;
+    height: 0;
+    border: .6em solid transparent;
+    border-left-color: inherit;
+    border-right: 0;
+    margin-top: -.6em;
+    margin-right: -.6em
+}
+
+.advance-ui-wrapper>.notification-text {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%
+}
+
+.advance-ui-wrapper>.notification-text::after {
+    all: initial;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: .4em;
+    width: 0;
+    border-left-color: inherit;
+    margin-right: -.6em;
+    border: .3em solid #ffc53a;
+    border-right: 0;
+    height: auto;
+    top: .4em;
+    margin-top: 0
+}
+
+.advance-ui-wrapper>.input-text::before {
+    all: initial;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: .4em;
+    width: 0;
+    height: 0;
+    border: .6em solid transparent;
+    margin-top: -.6em;
+    margin-left: -.6em;
+    border-left-color: inherit;
+    border-right: 0
+}
+
+.advance-ui-wrapper>#input-text {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.advance-ui-wrapper>#input-text::before {
+    all: initial
+}
+
+.advance-ui-wrapper .stats-bar,.advance-ui-wrapper .notification-bar>span {
+    background: hsl(224,46%,7%);
+    box-shadow: 0 0 30px -5px #596383;
+    border: 1px solid #fff
+}
+
+.notification-bar {
+    background-color: inherit;
+    display: none
+}
+
+.advance-ui-wrapper .notification-bar {
+    white-space: pre-wrap;
+    color: #1d9e11;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: unset;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end
+}
+
+.notification-bar span {
+    z-index: 20;
+    min-width: 250px;
+    max-width: 20%;
+    padding: 1ch;
+    margin: .5ch;
+    background-color: hsl(223,48%,20%);
+    border: 1px solid #fff;
+    border-radius: .5em
+}
+
+.floating-window {
+    position: fixed;
+    z-index: 2;
+    height: auto;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background: hsl(26,100%,7%);
+    border: 2px solid hsl(24,100%,16%);
+    border-radius: .5em;
+    padding: 1ch 1ch 1em
+}
+
+.floating-window .close-button,.floating-window .minimize-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid #666;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: #666;
+    cursor: pointer
+}
+
+.floating-window .close-button:hover,.floating-window .minimize-button:hover {
+    border-color: #ccc;
+    color: #ccc
+}
+
+.floating-window .close-button::before {
+    content: "x"
+}
+
+.floating-window .minimize-button::before {
+    content: "-"
+}
+
+.floating-button {
+    background: #c4cccc;
+    color: hsl(26,100%,7%);
+    font-weight: 700;
+    border: 0;
+    border-radius: 2px;
+    padding: 0 2px;
+    cursor: pointer
+}
+
+.floating-button:hover {
+    background: #fff;
+    color: hsl(26,100%,7%)
+}
+
+.window-mover {
+    cursor: move
+}
+
+.trade-window {
+    user-select: none
+}
+
+.trade-window table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.trade-window td {
+    border: 1px solid #333;
+    border-left: 0;
+    border-right: 0;
+    padding: 2px .5ch;
+    text-align: center
+}
+
+.trade-window th {
+    padding: 0 .5ch 4px;
+    text-align: center
+}
+
+.trade-button {
+    cursor: pointer
+}
+
+.trade-button:hover {
+    color: #fff
+}
+
+.menu-window,.inventory-window {
+    max-width: 50%;
+    min-width: 300px;
+    width: 25%;
+    user-select: none
+}
+
+.inventory-window {
+    min-width: 200px;
+    width: fit-content
+}
+
+#menu-list,#inventory-list {
+    display: block;
+    margin: 1em 0 0 1em
+}
+
+#menu-list>a,#inventory-list>a {
+    display: list-item;
+    cursor: pointer;
+    margin: 2px 0
+}
+
+#menu-list>a:hover,#inventory-list>a:hover {
+    color: #fff
+}
+
+.faucet-window {
+    user-select: none
+}
+
+.fa-bitcoin {
+    cursor: pointer
+}
